@@ -7,8 +7,8 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'AppMonitor'
-  s.version          = '0.1.8'
+  s.name             = 'ISAppMonitor'
+  s.version          = '0.1.9'
   s.summary          = '集成有关App的性能监控功能'
 
 # This description is used to generate tags and improve search results.
@@ -33,24 +33,24 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
   
   s.subspec 'Core' do |sp|
-      sp.source_files = 'AppMonitor/Classes/Core/*.{h,m}'
+      sp.source_files = 'ISAppMonitor/Classes/Core/*.{h,m}'
       
-      sp.dependency 'AppMonitor/Database'
-      sp.dependency 'AppMonitor/Model'
-      sp.dependency 'AppMonitor/Utils'
+      sp.dependency 'ISAppMonitor/Database'
+      sp.dependency 'ISAppMonitor/Model'
+      sp.dependency 'ISAppMonitor/Utils'
   end
   s.subspec 'Database' do |sp|
-      sp.source_files = 'AppMonitor/Classes/Database/*'
+      sp.source_files = 'ISAppMonitor/Classes/Database/*'
       
-      sp.dependency 'AppMonitor/Model'
+      sp.dependency 'ISAppMonitor/Model'
   end
   s.subspec 'Model' do |sp|
-      sp.source_files = 'AppMonitor/Classes/Model/*'
+      sp.source_files = 'ISAppMonitor/Classes/Model/*'
   end
   s.subspec 'Utils' do |sp|
-      sp.source_files = 'AppMonitor/Classes/Utils/*'
+      sp.source_files = 'ISAppMonitor/Classes/Utils/*'
       
-      sp.dependency 'AppMonitor/Model'
+      sp.dependency 'ISAppMonitor/Model'
   end
   
   # s.resource_bundles = {

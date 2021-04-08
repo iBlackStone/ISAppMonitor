@@ -1,0 +1,6 @@
+framework module ISAppMonitor {
+  umbrella header "ISAppMonitor-umbrella.h"
+
+  export *
+  module * { export * }
+}

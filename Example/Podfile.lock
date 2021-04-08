@@ -14,36 +14,36 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - AppMonitor (0.1.7):
-    - AFNetworking (~> 3.1.0)
-    - AppMonitor/Core (= 0.1.7)
-    - AppMonitor/Database (= 0.1.7)
-    - AppMonitor/Model (= 0.1.7)
-    - AppMonitor/Utils (= 0.1.7)
-    - FMDB (~> 2.6.2)
-  - AppMonitor/Core (0.1.7):
-    - AFNetworking (~> 3.1.0)
-    - AppMonitor/Database
-    - AppMonitor/Model
-    - AppMonitor/Utils
-    - FMDB (~> 2.6.2)
-  - AppMonitor/Database (0.1.7):
-    - AFNetworking (~> 3.1.0)
-    - AppMonitor/Model
-    - FMDB (~> 2.6.2)
-  - AppMonitor/Model (0.1.7):
-    - AFNetworking (~> 3.1.0)
-    - FMDB (~> 2.6.2)
-  - AppMonitor/Utils (0.1.7):
-    - AFNetworking (~> 3.1.0)
-    - AppMonitor/Model
-    - FMDB (~> 2.6.2)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
+  - ISAppMonitor (0.1.8):
+    - AFNetworking (~> 3.1.0)
+    - FMDB (~> 2.6.2)
+    - ISAppMonitor/Core (= 0.1.8)
+    - ISAppMonitor/Database (= 0.1.8)
+    - ISAppMonitor/Model (= 0.1.8)
+    - ISAppMonitor/Utils (= 0.1.8)
+  - ISAppMonitor/Core (0.1.8):
+    - AFNetworking (~> 3.1.0)
+    - FMDB (~> 2.6.2)
+    - ISAppMonitor/Database
+    - ISAppMonitor/Model
+    - ISAppMonitor/Utils
+  - ISAppMonitor/Database (0.1.8):
+    - AFNetworking (~> 3.1.0)
+    - FMDB (~> 2.6.2)
+    - ISAppMonitor/Model
+  - ISAppMonitor/Model (0.1.8):
+    - AFNetworking (~> 3.1.0)
+    - FMDB (~> 2.6.2)
+  - ISAppMonitor/Utils (0.1.8):
+    - AFNetworking (~> 3.1.0)
+    - FMDB (~> 2.6.2)
+    - ISAppMonitor/Model
 
 DEPENDENCIES:
-  - AppMonitor (from `../`)
+  - ISAppMonitor (from `../`)
 
 SPEC REPOS:
   trunk:
@@ -51,14 +51,14 @@ SPEC REPOS:
     - FMDB
 
 EXTERNAL SOURCES:
-  AppMonitor:
+  ISAppMonitor:
     :path: "../"
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AppMonitor: 6cc873e4a8b8c6b6892aa230845ee2f10d1bc6c5
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  ISAppMonitor: 67514403d51721973e29fa902103a96ef14f3c1b
 
-PODFILE CHECKSUM: 8c6474d07a79c6618c63787aedb039b4d28848aa
+PODFILE CHECKSUM: 89da54ed68b8af9a00be51094eca9104ed91e37b
 
 COCOAPODS: 1.9.3

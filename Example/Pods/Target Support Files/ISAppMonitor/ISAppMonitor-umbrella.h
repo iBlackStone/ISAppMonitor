@@ -25,6 +25,6 @@
 #import "AMStackAnalyzing.h"
 #import "AMStackMaker.h"
 
-FOUNDATION_EXPORT double AppMonitorVersionNumber;
-FOUNDATION_EXPORT const unsigned char AppMonitorVersionString[];
+FOUNDATION_EXPORT double ISAppMonitorVersionNumber;
+FOUNDATION_EXPORT const unsigned char ISAppMonitorVersionString[];
 

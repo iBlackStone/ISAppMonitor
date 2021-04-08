@@ -30,37 +30,37 @@
   "subspecs": [
     {
       "name": "Core",
-      "source_files": "AppMonitor/Classes/Core/*.{h,m}",
+      "source_files": "ISAppMonitor/Classes/Core/*.{h,m}",
       "dependencies": {
-        "AppMonitor/Database": [
+        "ISAppMonitor/Database": [
 
         ],
-        "AppMonitor/Model": [
+        "ISAppMonitor/Model": [
 
         ],
-        "AppMonitor/Utils": [
+        "ISAppMonitor/Utils": [
 
         ]
       }
     },
     {
       "name": "Database",
-      "source_files": "AppMonitor/Classes/Database/*",
+      "source_files": "ISAppMonitor/Classes/Database/*",
       "dependencies": {
-        "AppMonitor/Model": [
+        "ISAppMonitor/Model": [
 
         ]
       }
     },
     {
       "name": "Model",
-      "source_files": "AppMonitor/Classes/Model/*"
+      "source_files": "ISAppMonitor/Classes/Model/*"
     },
     {
       "name": "Utils",
-      "source_files": "AppMonitor/Classes/Utils/*",
+      "source_files": "ISAppMonitor/Classes/Utils/*",
       "dependencies": {
-        "AppMonitor/Model": [
+        "ISAppMonitor/Model": [
 
         ]
       }

@@ -7,7 +7,7 @@
 //
 
 #import "ISAppDelegate.h"
-#import <AppMonitor/AppMonitor.h>
+#import <ISAppMonitor/AppMonitor.h>
 
 @implementation ISAppDelegate
 
