@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AppMonitor'
-  s.version          = '0.1.6'
+  s.version          = '0.1.8'
   s.summary          = '集成有关App的性能监控功能'
 
 # This description is used to generate tags and improve search results.
@@ -58,7 +58,7 @@ Pod::Spec.new do |s|
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  s.frameworks = 'UIKit', 'MapKit'
+  s.frameworks = 'UIKit'
   s.dependency 'AFNetworking', '~> 3.1.0'
   s.dependency 'FMDB', '~> 2.6.2'
 end

@@ -8,7 +8,6 @@
 #import "AMStackMaker.h"
 #import "AMMacro.h"
 #import "AMStackAnalyzing.h"
-#import "AppMonitor+CPU.h"
 
 @implementation AMStackMaker
 

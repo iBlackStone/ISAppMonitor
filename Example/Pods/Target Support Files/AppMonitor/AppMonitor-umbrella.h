@@ -23,6 +23,7 @@
 #import "AMFuncCore.h"
 #import "AMMacro.h"
 #import "AMStackAnalyzing.h"
+#import "AMStackMaker.h"
 
 FOUNDATION_EXPORT double AppMonitorVersionNumber;
 FOUNDATION_EXPORT const unsigned char AppMonitorVersionString[];

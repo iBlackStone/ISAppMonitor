@@ -1,6 +1,6 @@
 {
   "name": "AppMonitor",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "summary": "集成有关App的性能监控功能",
   "description": "1.提供CPU性能监测功能。\n2.提供App卡顿监控功能。\n3.提供App方法调用耗时功能。\n4.所有日志均提供本地缓存功能。",
   "homepage": "https://github.com/iBlackStone/AppMonitor",
@@ -13,15 +13,12 @@
   },
   "source": {
     "git": "https://github.com/iBlackStone/AppMonitor.git",
-    "tag": "0.1.6"
+    "tag": "0.1.7"
   },
   "platforms": {
     "ios": "9.0"
   },
-  "frameworks": [
-    "UIKit",
-    "MapKit"
-  ],
+  "frameworks": "UIKit",
   "dependencies": {
     "AFNetworking": [
       "~> 3.1.0"
