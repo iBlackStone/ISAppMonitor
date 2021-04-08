@@ -9,8 +9,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define STUCK_WARNING_TIME  88  // ms
-
 @interface AppMonitor (Stuck)
 
 - (void)startStuckMonitor;

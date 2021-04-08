@@ -9,7 +9,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define CPU_WARNING_USAGE   80  // %
 
 @interface AppMonitor (CPU)
 

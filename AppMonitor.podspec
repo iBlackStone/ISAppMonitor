@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AppMonitor'
-  s.version          = '0.1.3'
+  s.version          = '0.1.6'
   s.summary          = '集成有关App的性能监控功能'
 
 # This description is used to generate tags and improve search results.
@@ -32,18 +32,25 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '9.0'
   
-  s.source_files = 'AppMonitor/Classes/*.{h,m}'
   s.subspec 'Core' do |sp|
       sp.source_files = 'AppMonitor/Classes/Core/*.{h,m}'
+      
+      sp.dependency 'AppMonitor/Database'
+      sp.dependency 'AppMonitor/Model'
+      sp.dependency 'AppMonitor/Utils'
   end
   s.subspec 'Database' do |sp|
       sp.source_files = 'AppMonitor/Classes/Database/*'
+      
+      sp.dependency 'AppMonitor/Model'
   end
   s.subspec 'Model' do |sp|
       sp.source_files = 'AppMonitor/Classes/Model/*'
   end
   s.subspec 'Utils' do |sp|
       sp.source_files = 'AppMonitor/Classes/Utils/*'
+      
+      sp.dependency 'AppMonitor/Model'
   end
   
   # s.resource_bundles = {

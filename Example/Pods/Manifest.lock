@@ -14,24 +14,29 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - AppMonitor (0.1.0):
+  - AppMonitor (0.1.6):
     - AFNetworking (~> 3.1.0)
-    - AppMonitor/Core (= 0.1.0)
-    - AppMonitor/Database (= 0.1.0)
-    - AppMonitor/Model (= 0.1.0)
-    - AppMonitor/Utils (= 0.1.0)
+    - AppMonitor/Core (= 0.1.6)
+    - AppMonitor/Database (= 0.1.6)
+    - AppMonitor/Model (= 0.1.6)
+    - AppMonitor/Utils (= 0.1.6)
     - FMDB (~> 2.6.2)
-  - AppMonitor/Core (0.1.0):
+  - AppMonitor/Core (0.1.6):
+    - AFNetworking (~> 3.1.0)
+    - AppMonitor/Database
+    - AppMonitor/Model
+    - AppMonitor/Utils
+    - FMDB (~> 2.6.2)
+  - AppMonitor/Database (0.1.6):
+    - AFNetworking (~> 3.1.0)
+    - AppMonitor/Model
+    - FMDB (~> 2.6.2)
+  - AppMonitor/Model (0.1.6):
     - AFNetworking (~> 3.1.0)
     - FMDB (~> 2.6.2)
-  - AppMonitor/Database (0.1.0):
+  - AppMonitor/Utils (0.1.6):
     - AFNetworking (~> 3.1.0)
-    - FMDB (~> 2.6.2)
-  - AppMonitor/Model (0.1.0):
-    - AFNetworking (~> 3.1.0)
-    - FMDB (~> 2.6.2)
-  - AppMonitor/Utils (0.1.0):
-    - AFNetworking (~> 3.1.0)
+    - AppMonitor/Model
     - FMDB (~> 2.6.2)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
@@ -51,7 +56,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AppMonitor: c4ac2df63058e5f929c1953e2fe0bd38b72ac8ce
+  AppMonitor: 6618939a4d31fdcc1ad03f5827a7c6def1c47712
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
 
 PODFILE CHECKSUM: 8c6474d07a79c6618c63787aedb039b4d28848aa

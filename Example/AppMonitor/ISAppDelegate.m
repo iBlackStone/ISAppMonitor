@@ -7,12 +7,14 @@
 //
 
 #import "ISAppDelegate.h"
+#import <AppMonitor/AppMonitor.h>
 
 @implementation ISAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[AppMonitor sharedInstance] startMointor:AppMonitorCPUUsage | AppMonitorMainRunLoopStuck];
     return YES;
 }
 

@@ -1,24 +1,23 @@
 {
   "name": "AppMonitor",
-  "version": "0.1.0",
+  "version": "0.1.6",
   "summary": "集成有关App的性能监控功能",
   "description": "1.提供CPU性能监测功能。\n2.提供App卡顿监控功能。\n3.提供App方法调用耗时功能。\n4.所有日志均提供本地缓存功能。",
-  "homepage": "https://github.com/StoneStoneStone/AppMonitor",
+  "homepage": "https://github.com/iBlackStone/AppMonitor",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "StoneStoneStone": "gao375976821@gmail.com"
+    "iBlackStone": "gao375976821@gmail.com"
   },
   "source": {
-    "git": "https://github.com/StoneStoneStone/AppMonitor.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/iBlackStone/AppMonitor.git",
+    "tag": "0.1.6"
   },
   "platforms": {
     "ios": "9.0"
   },
-  "source_files": "AppMonitor/Classes/*.{h,m}",
   "frameworks": [
     "UIKit",
     "MapKit"
@@ -34,11 +33,27 @@
   "subspecs": [
     {
       "name": "Core",
-      "source_files": "AppMonitor/Classes/Core/*.{h,m}"
+      "source_files": "AppMonitor/Classes/Core/*.{h,m}",
+      "dependencies": {
+        "AppMonitor/Database": [
+
+        ],
+        "AppMonitor/Model": [
+
+        ],
+        "AppMonitor/Utils": [
+
+        ]
+      }
     },
     {
       "name": "Database",
-      "source_files": "AppMonitor/Classes/Database/*"
+      "source_files": "AppMonitor/Classes/Database/*",
+      "dependencies": {
+        "AppMonitor/Model": [
+
+        ]
+      }
     },
     {
       "name": "Model",
@@ -46,7 +61,12 @@
     },
     {
       "name": "Utils",
-      "source_files": "AppMonitor/Classes/Utils/*"
+      "source_files": "AppMonitor/Classes/Utils/*",
+      "dependencies": {
+        "AppMonitor/Model": [
+
+        ]
+      }
     }
   ]
 }
