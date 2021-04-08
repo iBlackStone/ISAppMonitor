@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AppMonitor'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = '集成有关App的性能监控功能'
 
 # This description is used to generate tags and improve search results.
@@ -24,11 +24,11 @@ Pod::Spec.new do |s|
 4.所有日志均提供本地缓存功能。
                        DESC
 
-  s.homepage         = 'https://github.com/StoneStoneStone/AppMonitor'
+  s.homepage         = 'https://github.com/iBlackStone/AppMonitor'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'StoneStoneStone' => 'gao375976821@gmail.com' }
-  s.source           = { :git => 'https://github.com/StoneStoneStone/AppMonitor.git', :tag => s.version.to_s }
+  s.author           = { 'iBlackStone' => 'gao375976821@gmail.com' }
+  s.source           = { :git => 'https://github.com/iBlackStone/AppMonitor.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '9.0'
   
