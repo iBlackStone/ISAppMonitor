@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'AppMonitor_Example' do
+  pod 'AppMonitor', :path => '../'
+
+  target 'AppMonitor_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
