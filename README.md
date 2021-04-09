@@ -22,7 +22,7 @@ pod 'AppMonitor'
 
 ## Author
 
-StoneStoneStone, gao375976821@gmail.com
+iStone, gao375976821@gmail.com
 
 ## License
 
