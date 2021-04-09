@@ -52,7 +52,3 @@ typedef struct nlist              nlistByCPU;
 #ifndef SEG_DATA_CONST
 #define SEG_DATA_CONST  "__DATA_CONST"
 #endif
-
-// User config 
-#define CPU_WARNING_USAGE   80  // %
-#define STUCK_WARNING_TIME  88  // ms

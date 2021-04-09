@@ -11,6 +11,7 @@
 #import "AppMonitor+CPU.h"
 #import "AppMonitor+Stuck.h"
 #import "AMMacro.h"
+#import "AMConfig.h"
 
 static mach_port_t _mainThreadId;
 
@@ -84,7 +85,8 @@ static mach_port_t _mainThreadId;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         // 子线程开启一个持续的loop来进行监控
         while (YES) {
-            long semaphoreWait = dispatch_semaphore_wait(self->semaphore, dispatch_time(DISPATCH_TIME_NOW, STUCK_WARNING_TIME * NSEC_PER_MSEC));
+            NSInteger dura = [AMConfig sharedInstance].stuckDuration;
+            long semaphoreWait = dispatch_semaphore_wait(self->semaphore, dispatch_time(DISPATCH_TIME_NOW, dura * NSEC_PER_MSEC));
             if (semaphoreWait != 0) {
                 if (!self->runLoopObserver) {
                     self->timeoutCount = 0;

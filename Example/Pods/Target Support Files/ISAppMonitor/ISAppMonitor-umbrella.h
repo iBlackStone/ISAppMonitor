@@ -20,6 +20,7 @@
 #import "AMDB.h"
 #import "AMFuncCostModel.h"
 #import "AMStackModel.h"
+#import "AMConfig.h"
 #import "AMFuncCore.h"
 #import "AMMacro.h"
 #import "AMStackAnalyzing.h"

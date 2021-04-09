@@ -15,7 +15,7 @@
     if (!model) {
         return;
     }
-    [[AMDB sharedInstance] insertStackTableWith:model];
+    [[AMDB sharedInstance] asyncInsertStackTableWith:model compelete:nil];
 }
 
 - (void)clearStackInfo {
@@ -26,7 +26,7 @@
     if (!model) {
         return;
     }
-    [[AMDB sharedInstance] inserFuncTableWith:model];
+    [[AMDB sharedInstance] asyncInsertFuncTableWith:model compelete:nil];
 }
 
 - (void)clearFuncInfo {

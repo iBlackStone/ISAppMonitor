@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) FMDatabaseQueue *dbQueue;
 @property (nonatomic, copy) NSString *dbPath;
+@property (nonatomic, strong) dispatch_queue_t operationQueue;
 
 @end
 
@@ -59,6 +60,7 @@
             }
         }
         _dbQueue = [FMDatabaseQueue databaseQueueWithPath:_dbPath];
+        _operationQueue = dispatch_queue_create("com.iStone.ll", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
 }
@@ -103,10 +105,14 @@
 }
 
 - (void)clearStack {
+    BOOL success = NO;
     FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
     if ([db open]) {
         [db executeUpdate:@"delete from stack"];
         [db close];
+    }
+    if (success == NO) {
+        NSLog(@"Failed to delete stack table.");
     }
 }
 
@@ -153,11 +159,62 @@
     return nil;
 }
 
+#pragma mark - Thread Safe
+- (void)asyncInsertFuncTableWith:(AMFuncCostModel *)model compelete:(void(^)(void))block {
+    dispatch_barrier_async(self.operationQueue, ^{
+        [self inserFuncTableWith:model];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (block) {
+                block();
+            }
+        });
+    });
+}
+- (void)asyncFetchFuncModelsWith:(NSUInteger)page compelete:(void(^)( NSArray<AMFuncCostModel*> * _Nullable))block{
+    dispatch_async(self.operationQueue, ^{
+        NSArray *ret = [self fetchFuncModelsWith:page];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (block) {
+                block(ret);
+            }
+        });
+    });
+}
+
+- (void)asyncInsertStackTableWith:(AMStackModel *)model
+                        compelete:(void(^)(void))block {
+    dispatch_barrier_async(self.operationQueue, ^{
+        [self insertStackTableWith:model];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (block) {
+                block();
+            }
+        });
+    });
+}
+- (void)asyncFetchStackModelsWith:(NSUInteger)page
+                        compelete:(void(^)( NSArray<AMStackModel*> * _Nullable))block{
+    dispatch_async(self.operationQueue, ^{
+        NSArray *ret = [self fetchStackModelsWith:page];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (block) {
+                block(ret);
+            }
+        });
+    });
+}
+
+#pragma mark - end
+
 - (void)clearFuncTable{
+    BOOL success = NO;
     FMDatabase *db = [FMDatabase databaseWithPath:self.dbPath];
     if ([db open]) {
-        [db executeUpdate:@"delete from clscall"];
+        success = [db executeUpdate:@"delete from clscall"];
         [db close];
+    }
+    if (success == NO) {
+        NSLog(@"Failed to delete function table.");
     }
 }
 

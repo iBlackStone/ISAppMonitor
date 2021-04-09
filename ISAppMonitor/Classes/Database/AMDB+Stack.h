@@ -17,6 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)clearStackTable;
 
+// Thread Safe API
+- (void)asyncInsertStackTableWith:(AMStackModel *)model
+                        compelete:(void(^)(void))block;
+- (void)asyncFetchStackModelsWith:(NSUInteger)page
+                        compelete:(void(^)( NSArray<AMStackModel*> * _Nullable))block;
+
 @end
 
 NS_ASSUME_NONNULL_END

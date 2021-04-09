@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ISAppMonitor'
-  s.version          = '0.1.9'
-  s.summary          = '集成有关App的性能监控功能'
+  s.version          = '0.2.0'
+  s.summary          = '性能监测及缓存工具。'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -59,6 +59,6 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'
-  s.dependency 'AFNetworking', '~> 3.1.0'
-  s.dependency 'FMDB', '~> 2.6.2'
+  s.dependency 'AFNetworking'
+  s.dependency 'FMDB'
 end

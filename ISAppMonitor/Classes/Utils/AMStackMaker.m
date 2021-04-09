@@ -8,6 +8,7 @@
 #import "AMStackMaker.h"
 #import "AMMacro.h"
 #import "AMStackAnalyzing.h"
+#import "AMConfig.h"
 
 @implementation AMStackMaker
 
@@ -34,7 +35,7 @@
             // 线程为非空线程进入
             if (!(threadBaseInfo->flags & TH_FLAGS_IDLE)) {
                 integer_t cpuUsage = threadBaseInfo->cpu_usage / 10; // cpu_usage(0...1000)，除10转为百分比
-                if (cpuUsage > CPU_WARNING_USAGE) {
+                if (cpuUsage >= [AMConfig sharedInstance].usagePercent) {
                     // 创建model，记录堆栈并返回
                     AMStackModel *model = [AMStackModel new];
                     model.wholeStackString = stackInfoInThread(threads[i]);

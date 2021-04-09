@@ -9,7 +9,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-
 @interface AppMonitor (CPU)
 
 - (void)startCPUMonitor;

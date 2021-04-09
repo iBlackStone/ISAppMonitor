@@ -22,6 +22,9 @@ typedef NS_OPTIONS(NSUInteger, AppMonitorOptions) {
 
 - (void)stopMointor:(AppMonitorOptions)options;
 
+// default
+- (NSUInteger)getCPUUsagePercent;
+
 @end
 
 NS_ASSUME_NONNULL_END

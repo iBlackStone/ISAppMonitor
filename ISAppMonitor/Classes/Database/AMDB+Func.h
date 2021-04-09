@@ -17,6 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)clearFuncTable;
 
+// Thread Safe API
+- (void)asyncInsertFuncTableWith:(AMFuncCostModel *)model
+                       compelete:(void(^)(void))block;
+- (void)asyncFetchFuncModelsWith:(NSUInteger)page
+                       compelete:(void(^)( NSArray<AMFuncCostModel*> * _Nullable))block;
+
+
 @end
 
 NS_ASSUME_NONNULL_END
