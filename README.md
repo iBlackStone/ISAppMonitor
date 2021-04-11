@@ -74,7 +74,7 @@ pod 'ISAppMonitor'
 ## Author
 
 参考大牛代码，感谢他们无私的分享
-1.  戴铭 - iOS开发高手课 [ ](https://time.geekbang.org/column/intro/161?code=Qjb1JtJcvAPISj9QjxdKrAmeXmURMroQbkOcLNm0jeY%3D&from=singlemessage&isappinstalled=0)
+1.  戴铭 -  [iOS开发高手课](https://time.geekbang.org/column/intro/161?code=Qjb1JtJcvAPISj9QjxdKrAmeXmURMroQbkOcLNm0jeY%3D&from=singlemessage&isappinstalled=0)
 
 ## License
 
