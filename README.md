@@ -60,6 +60,10 @@ typedef NS_OPTIONS(NSUInteger, AppMonitorOptions) {
 @end
 ```
 
+## Tasks
+- [ ] 程序有消耗性能的地方 thread get state。这个也会被监控检查出，所以可以过滤掉这样的堆栈信息
+ 
+
 ## Requirements
 
 ## Installation
