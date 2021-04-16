@@ -75,6 +75,22 @@ it, simply add the following line to your Podfile:
 pod 'ISAppMonitor'
 ```
 
+## Search
+```ruby
+-> ISAppMonitor (0.1.9)
+   集成有关App的性能监控功能
+   pod 'ISAppMonitor', '~> 0.1.9'
+   - Homepage: https://github.com/iBlackStone/AppMonitor
+   - Source:   https://github.com/iBlackStone/AppMonitor.git
+   - Versions: 0.1.9 [Master repo]
+   - Subspecs:
+     - ISAppMonitor/Core (0.1.9)
+     - ISAppMonitor/Database (0.1.9)
+     - ISAppMonitor/Model (0.1.9)
+     - ISAppMonitor/Utils (0.1.9)
+(END)
+```
+
 ## Author
 
 参考大牛代码，感谢他们无私的分享
