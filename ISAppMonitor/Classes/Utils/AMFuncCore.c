@@ -25,9 +25,9 @@
  * name to its replacement
  */
 struct rebinding {
-    const char *name;
-    void *replacement;
-    void **replaced;
+    const char *name; // 符号名称
+    void *replacement; // 替换方法，程序员定义的
+    void **replaced; // 被替换的原始方法
 };
 
 /*
@@ -92,27 +92,40 @@ static void perform_rebinding_with_section(struct rebindings_entry *rebindings,
                                            nlist_t *symtab,
                                            char *strtab,
                                            uint32_t *indirect_symtab) {
+    
+    // 获取间接符号表索引数组 = 间接符号地址 + section的保留地址
     uint32_t *indirect_symbol_indices = indirect_symtab + section->reserved1;
+    
+    // 间接符号绑定 = 游标 + section地址
     void **indirect_symbol_bindings = (void **)((uintptr_t)slide + section->addr);
+    
+    // 遍历section
     for (uint i = 0; i < section->size / sizeof(void *); i++) {
         uint32_t symtab_index = indirect_symbol_indices[i];
+        
+        // This entry is a INDIRECT_SYMBOL_ABS symbol in indirect(间接的) symbol table and not an index to symbol table
         if (symtab_index == INDIRECT_SYMBOL_ABS || symtab_index == INDIRECT_SYMBOL_LOCAL ||
             symtab_index == (INDIRECT_SYMBOL_LOCAL   | INDIRECT_SYMBOL_ABS)) {
             continue;
         }
         uint32_t strtab_offset = symtab[symtab_index].n_un.n_strx;
+        // 根据符号名称偏移得到符号名称
         char *symbol_name = strtab + strtab_offset;
         if (strnlen(symbol_name, 2) < 2) {
             continue;
         }
         struct rebindings_entry *cur = rebindings;
         while (cur) {
+            // 遍历重绑结构体的rebindings
             for (uint j = 0; j < cur->rebindings_nel; j++) {
+                // rebinding's name == symbol_name 比对符号名，相等进入处理逻辑
                 if (strcmp(&symbol_name[1], cur->rebindings[j].name) == 0) {
                     if (cur->rebindings[j].replaced != NULL &&
                         indirect_symbol_bindings[i] != cur->rebindings[j].replacement) {
+                        // 被替换方法记录在结构体中
                         *(cur->rebindings[j].replaced) = indirect_symbol_bindings[i];
                     }
+                    // 将符号表中的方法替换为我们定义的方法
                     indirect_symbol_bindings[i] = cur->rebindings[j].replacement;
                     goto symbol_loop;
                 }
@@ -122,6 +135,13 @@ static void perform_rebinding_with_section(struct rebindings_entry *rebindings,
     symbol_loop:;
     }
 }
+
+/*
+ LC_SYMTAB: 当前Mach-O中的符号表信息。不论是静态链接器还是动态链接器在链接此文件时，都要使用该 Load Command
+ LC_DYSYMTAB: 描述动态链接器使用其他的Symbol Table信息
+ 
+ 通过【这两个】Load Command 来描述 Symbol Table 的大小和位置，以及其他元数据
+ */
 
 static void rebind_symbols_for_image(struct rebindings_entry *rebindings,
                                      const struct mach_header *header,
@@ -133,6 +153,27 @@ static void rebind_symbols_for_image(struct rebindings_entry *rebindings,
     
     segment_command_t *cur_seg_cmd;
     segment_command_t *linkedit_segment = NULL;
+    
+    /*
+     Symbol Table: 用来保存符号。
+     String Table: 用来保存符号的名称。
+     
+     // location: /usr/include/mach-o/loader.h
+     struct symtab_command {
+         // 共有属性。指明当前描述的加载命令，当前被设置为LC_SYMTAB
+         uint32_t cmd ;
+         // 共有属性。指明加载命令的大小，当前被设置为sizeof(symtab_command)
+         uint32_t cmdsize;
+         // 表示从文件开始到symbol table所在位置的偏移量。symbol table用[nlist]来表示
+         uint32_t symoff;
+         // 符号表内符号的数量
+         uint32_t nsyms;
+         // 表示从文件开始到string table所在位置的偏移量。
+         uint32_t stroff;
+         // 表示string table大小(以byteカ单位)
+         uint32_t strsize;
+     };
+     */
     struct symtab_command* symtab_cmd = NULL;
     struct dysymtab_command* dysymtab_cmd = NULL;
     
@@ -197,12 +238,13 @@ static int fish_rebind_symbols(struct rebinding rebindings[], size_t rebindings_
     }
     // If this was the first call, register callback for image additions (which is also invoked for
     // existing images, otherwise, just run on existing images
-    //首先是遍历 dyld 里的所有的 image，取出 image header 和 slide。注意第一次调用时主要注册 callback
+    // 首先是遍历 dyld 里的所有的 image，取出 image header 和 slide。注意第一次调用时主要注册 callback
     if (!_rebindings_head->next) {
         _dyld_register_func_for_add_image(_rebind_symbols_for_image);
     } else {
         uint32_t c = _dyld_image_count();
         for (uint32_t i = 0; i < c; i++) {
+            // 逐一遍历image，传入mach-header和image的游标
             _rebind_symbols_for_image(_dyld_get_image_header(i), _dyld_get_image_vmaddr_slide(i));
         }
     }
